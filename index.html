@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Section</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+  .about-section {
+    text-align: center;
+    padding: 50px 0;
+  }
+  .about-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .about-section img {
+    width: 150px; /* Adjust the size as needed */
+    height: 200px;
+    border-radius: 50%; /* Makes the image round */
+    margin-bottom: 20px;
+  }
+  .about-section p {
+    color: #333;
+  }
+
+  /* Additional CSS for Projects Section */
+.projects-section h2 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+.card {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
+}
+.card-img-top {
+  max-height: 180px; /* Adjust this value to fit the image properly in the card */
+  object-fit: cover; /* This makes sure the image covers the area properly */
+}
+.card-body {
+  padding: 15px;
+}
+.card-title {
+  font-size: 1.25rem;
+}
+.card-text {
+  margin-bottom: 15px;
+}
+
+/* Additional CSS for Skills Section */
+.skills-section h2 {
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+}
+.skills-section .card {
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.skills-section .card-img-top {
+  padding: 20px; /* Add padding around your images if needed */
+  background-color: #f8f9fa; /* Adjust the background color if your images have transparent areas#f8f9fa */
+  height: 180px; /* Fixed height for consistency */
+  object-fit: contain; /* This will make sure the image is scaled properly within the container */
+}
+.skills-section .card-body {
+  padding: 15px;
+}
+.skills-section .card-title {
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+}
+.skills-section .btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+}
+.skills-section .btn-outline-primary:hover {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* Additional CSS for Contact Section */
+.contact-section {
+  padding: 50px 0;
+}
+.contact-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+.contact-section p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+.social-icon {
+  width: 50px; /* Size of your icons */
+  margin-bottom: 10px;
+}
+/* Hover effect for icons */
+.social-icon:hover {
+  opacity: 0.7;
+}
+/* Style for links in the Contact section */
+.contact-section a {
+  color: #fff;
+  text-decoration: none; /* Removes underline from links */
+  display: inline-block; /* Allows for margin on the bottom */
+  margin-bottom: 10px;
+}
+.contact-section a:hover {
+  color: #ddd; /* Color when hovering over the link */
+}
+
+/* CSS for Sticky Navbar */
+.navbar {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
+}
+
+/* Ensure padding is added to body to avoid content being hidden behind the navbar */
+body { 
+  padding-top: 56px; /* Adjust this value based on the height of your navbar */
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style for navigation bar links */
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #f8f9fa; /* Slightly lighter white when hovering over links */
+}
+
+/* Media query for responsive navbar collapsing */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background-color: #343a40; /* Same as navbar color for seamless look */
+  }
+}
+
+
+</style>
+
+</head>
+<body>
+<!-- Home Section at the very top -->
+<section id="home"></section>
+<section id='about' class="about-section">
+  <div class="container">
+    <h2>About</h2>
+    <img src="images/about/1.jpg" alt="About Me">
+    <p>I am an applied data scientist and machine learning practitioner with a background spanning deep learning, statistical modeling, and real-world AI systems. I previously worked at Intel, where I applied data science and Design of Experiments to optimize semiconductor manufacturing, improve yield, and automate large-scale analysis pipelines. My work focused on turning complex data into practical, measurable outcomes in high-stakes production environments.</p>
+    <p>Since then, I have founded and led Sonic Pro Studios, where I combine machine learning with creative technology. My recent work includes building generative audio models, CNN-based audio classifiers, and ML-driven workflow optimizations used in production settings. I enjoy bridging research and execution—taking ideas from experimentation to deployment—and I am particularly interested in applied AI, generative models, and systems that operate reliably at scale.</p>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects-section bg-light">
+  <div class="container">
+    <h2 class="text-center">Projects</h2>
+
+    <div class="row justify-content-center">
+
+      <!-- Project 1 -->
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <img src="images/projects/1.jpg" class="card-img-top" alt="Project 1">
+          <div class="card-body d-flex flex-column">
+           
+            <p class="card-text">
+              CNN-Powered Detector: Spotting Suno AI Music vs. Human Tracks
+            </p>
+            <a href="https://github.com/balubm/CNN-Powered-Detector-Spotting-Suno-AI-Music-vs.-Human-Tracks"
+               class="btn btn-primary mt-auto"
+               target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <img src="images/projects/2.jpg" class="card-img-top" alt="Project 2">
+          <div class="card-body d-flex flex-column">
+        
+            <p class="card-text">
+              MeloLab: An AI Tool to Generate Unlimited Melodies in Any Scale or Mode 
+            </p>
+            <a href="https://github.com/balubm/MeloLab-An-AI-Tool-to-Generate-Unlimited-Melodies-in-Any-Scale-or-Mode"
+               class="btn btn-primary mt-auto"
+               target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <img src="images/projects/3.jpg" class="card-img-top" alt="Project 3">
+          <div class="card-body d-flex flex-column">
+           
+            <p class="card-text">
+              Contrastive Language–Audio Pretraining (CLAP) for Semantic Origin Detection
+            </p>
+            <a href="https://github.com/balubm/Contrastive-Language-Audio-Pretraining-CLAP-for-Semantic-Origin-Detection"
+               class="btn btn-primary mt-auto"
+               target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <img src="images/projects/4.jpg" class="card-img-top" alt="Project 4">
+          <div class="card-body d-flex flex-column">
+
+            <p class="card-text">
+              Raag Bihag composition by RNN-LSTM
+            </p>
+            <a href="https://github.com/balubm/Raag-Bihag-composition-by-RNN-LSTM"
+               class="btn btn-primary mt-auto"
+               target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card h-100">
+          <img src="images/projects/5.jpg" class="card-img-top" alt="Project 5">
+          <div class="card-body d-flex flex-column">
+        
+            <p class="card-text">
+              Recognizing Musical Instruments with Deep Learning
+            </p>
+            <a href="https://github.com/balubm/Music-Instrument-Classification_CNN"
+               class="btn btn-primary mt-auto"
+               target="_blank">
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="articles" class="articles-section bg-white">
+  <div class="container text-center">
+    <h2>Articles</h2>
+    <p class="mt-3 mb-4" style="max-width: 700px; margin: 0 auto;">
+      I write about applied machine learning, production AI systems, and the intersection of technology and real-world problem solving. My published articles are available on LinkedIn.
+    </p>
+    <a href="https://www.linkedin.com/in/balamurali-balu-b5a0a6357/recent-activity/articles/" 
+       target="_blank" 
+       class="btn btn-outline-primary btn-lg">
+      Read My Articles
+    </a>
+  </div>
+</section>
+
+
+ <!-- Skills Section -->
+<section id="skills" class="skills-section bg-light">
+  <div class="container">
+    <h2 class="text-center">Skills</h2>
+    <div class="row justify-content-center mt-4">
+
+      <!-- Programming & Tools -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <h5 class="card-title">Programming & Tools</h5>
+            <p class="card-text">
+              Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, PyTorch, TensorFlow, Librosa
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Science & ML -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <h5 class="card-title">Data Science & ML</h5>
+            <p class="card-text">
+              Supervised & Unsupervised Learning, Neural Networks, CNN, RNN, XGBoost, Classification, Regression, Feature Engineering, Model Evaluation, Statistical Analysis, LLM, Generative AI
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Applied Skills -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+          <div class="card-body">
+            <h5 class="card-title">Applied Skills</h5>
+            <p class="card-text">
+              Cross-functional Teamwork, Research-to-Production Integration, Experiment Design & Data-Driven Decision Making, Communication of Technical Insights to Non-Technical Stakeholders
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Education Section -->
+<section id="education" class="education-section bg-white py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Education</h2>
+    <p class="mb-0">🎓 Ph.D., Chemical Engineering – Georgia Institute of Technology</p>
+  </div>
+</section>
+
+
+
+
+ 
+
+<!-- Contact Me Section -->
+<section id="contact" class="contact-section text-center text-white bg-dark py-5">
+  <div class="container">
+    <h2 class="mb-4">Contact Me</h2>
+
+    <!-- Contact Info -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-md-4 mb-3">
+        <p class="mb-0"><i class="fas fa-envelope"></i> <a href="mailto:balubm@gmail.com" class="text-white">balubm@gmail.com</a></p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <p class="mb-0"><i class="fas fa-phone"></i> <a href="tel:+15035473733" class="text-white">503-547-3733</a></p>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="row justify-content-center">
+      <div class="col-4 col-md-2 mb-3">
+        <a href="https://www.linkedin.com/in/balamurali-balu-b5a0a6357/" target="_blank" class="d-block text-white">
+          <img src="icons/linkedin.png" alt="LinkedIn" class="social-icon mb-2">
+          LinkedIn
+        </a>
+      </div>
+      <div class="col-4 col-md-2 mb-3">
+        <a href="https://github.com/balubm" target="_blank" class="d-block text-white">
+          <img src="icons/github.png" alt="GitHub" class="social-icon mb-2">
+          GitHub
+        </a>
+      </div>
+      <div class="col-4 col-md-2 mb-3">
+        <a href="https://medium.com/@balubm_57188" target="_blank" class="d-block text-white">
+          <img src="icons/medium.png" alt="Medium" class="social-icon mb-2">
+          Medium
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sticky Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#home">Portfolio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projects">Projects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#skills">Skills</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
