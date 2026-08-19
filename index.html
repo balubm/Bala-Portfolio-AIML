@@ -226,6 +226,47 @@
   .about-grid p { color: var(--text-dim); font-size: 16.5px; }
   .about-grid p strong { color: var(--text); font-weight: 600; }
 
+  /* ============ Featured (shipped products w/ video demos) ============ */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 64px;
+  }
+  .feature-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .feature-card .video {
+    aspect-ratio: 16 / 9;
+    border-bottom: 1px solid var(--line);
+    background: #000;
+  }
+  .feature-card .video iframe {
+    width: 100%; height: 100%;
+    border: 0;
+    display: block;
+  }
+  .feature-card .body { padding: 22px 24px 26px; }
+  .feature-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .feature-card .body > p { color: var(--text-dim); font-size: 15px; }
+  .sub-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 24px;
+  }
+
   /* ============ Projects ============ */
   .project-grid {
     display: grid;
@@ -335,24 +376,80 @@
     white-space: nowrap;
   }
 
-  /* ============ Credential line (inside About) ============ */
-  .about-cred {
+  /* ============ Credential cards (inside About) ============ */
+  .cred-grid {
     margin-top: 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .about-cred {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 16px;
     border: 1px solid var(--line);
     background: var(--bg-card);
     border-radius: var(--radius);
-    padding: 18px 24px;
+    padding: 22px 24px;
   }
   .about-cred svg {
     flex: none;
     width: 22px; height: 22px;
     color: var(--accent);
+    margin-top: 2px;
   }
   .about-cred p { color: var(--text-dim); font-size: 15px; line-height: 1.6; }
   .about-cred p strong { color: var(--text); font-weight: 600; }
+
+  /* ============ Experience ============ */
+  .xp-list { display: grid; gap: 20px; }
+  .xp-item {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 36px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 32px;
+  }
+  .xp-meta .dates {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .xp-meta .company {
+    font-family: var(--font-display);
+    font-size: 17.5px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .xp-meta .loc { font-size: 13px; color: var(--text-faint); }
+  .xp-body h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .xp-body ul { list-style: none; display: grid; gap: 10px; }
+  .xp-body li {
+    position: relative;
+    padding-left: 22px;
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .xp-body li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 10px; height: 2px;
+    background: var(--accent);
+  }
+  .xp-body li strong { color: var(--text); font-weight: 600; }
 
   /* ============ Contact ============ */
   .contact { text-align: center; }
@@ -418,6 +515,8 @@
     .hero-grid { grid-template-columns: 1fr; gap: 48px; }
     .hero-portrait { justify-self: start; width: min(100%, 320px); }
     .about-grid { grid-template-columns: 1fr; gap: 24px; }
+    .cred-grid { grid-template-columns: 1fr; }
+    .xp-item { grid-template-columns: 1fr; gap: 18px; padding: 26px 24px; }
     .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .skills-grid { grid-template-columns: 1fr; }
     .section { padding: 72px 0; }
@@ -439,6 +538,7 @@
     <a class="nav-brand" href="#top">Balamurali Balu<span class="dot">.</span></a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -450,13 +550,14 @@
 <header class="hero" id="top">
   <div class="container hero-grid">
     <div>
-      <p class="eyebrow">Applied Machine Learning · Audio &amp; Generative AI</p>
+      <p class="eyebrow">Machine Learning Engineer — Music · Controlla</p>
       <h1>Building ML systems<br>for <span class="accent">sound</span>.</h1>
       <p class="lede">
-        I'm a machine learning engineer at <strong>Controlla</strong>, an AI voice
-        transformation platform — building the models behind voice conversion,
-        AI choir generation, and stem separation. Previously, I used data science
-        to optimize semiconductor manufacturing at <strong>Intel</strong>.
+        I ship production audio AI at <strong>Controlla</strong> — including
+        <strong>Lyric Swap</strong>, a novel method that rewrites a song's lyrics while
+        preserving its melody and timing, and <strong>Choir Studio</strong>, an AI harmony
+        generation system. I build at the intersection of generative AI, audio DSP, and
+        music production: the technology and the art.
       </p>
       <div class="btn-row">
         <a class="btn btn-primary" href="mailto:balubm@gmail.com">
@@ -486,30 +587,96 @@
     </div>
     <div class="about-grid">
       <p class="reveal">
-        Today I'm a machine learning engineer at <strong>Controlla Voice</strong>, an AI
-        voice transformation platform, where I build and ship the ML behind the product:
-        voice conversion pipelines, AI choir generation, stem separation, and the audio
-        analytics that keep output quality high in production. My work runs the full arc
-        from research to deployment — evaluating and training models, designing listening
-        tests, and A/B testing improvements on live traffic.
+        I build at the intersection of <strong>generative AI, audio DSP, and music
+        production</strong> — shipping products that wouldn't exist without someone who
+        understands both the technology and the art. Eleven-plus years spanning audio
+        engineering, deep learning, and music, with end-to-end ownership from architecture
+        and PyTorch pipelines to low-latency deployment and the creative vision behind
+        each feature.
       </p>
       <p class="reveal">
-        I came to audio ML by way of production-scale data science. At <strong>Intel</strong>,
-        I applied statistical modeling and Design of Experiments to optimize semiconductor
-        manufacturing, improve yield, and automate large-scale analysis pipelines. In between,
-        I founded <strong>Sonic Pro Studios</strong>, combining machine learning with music
-        production — generative audio models, CNN-based audio classifiers, and ML-driven
-        studio workflows. What ties it together: taking ideas from experimentation to systems
-        that operate reliably at scale.
+        The path here: a Ph.D. at Georgia Tech, five years turning statistics into wafer
+        yield at <strong>Intel</strong>, a decade running <strong>Sonic Pro Studios</strong> —
+        an award-winning audio production house — and now <strong>Controlla Voice</strong>,
+        where the two halves of that story converge into production AI for music.
       </p>
     </div>
-    <div class="about-cred reveal">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
-      <p>
-        <strong>Ph.D., Georgia Institute of Technology</strong> — doctoral research in
-        chemical engineering, where I built the foundation in statistical modeling,
-        optimization, and design of experiments that anchors my ML work today.
-      </p>
+    <div class="cred-grid">
+      <div class="about-cred reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+        <p>
+          <strong>Ph.D., Georgia Institute of Technology</strong> — Ziegler Award for Best
+          PhD Proposal. The foundation in statistical modeling, optimization, and design
+          of experiments behind my ML work.
+        </p>
+      </div>
+      <div class="about-cred reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <p>
+          <strong>Berklee-trained music producer</strong> — Best Music Producer,
+          Indian Recording Artists Association Awards (2018).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Experience ============ -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">02 — Experience</p>
+      <h2>Where I've worked</h2>
+    </div>
+    <div class="xp-list">
+
+      <div class="xp-item reveal">
+        <div class="xp-meta">
+          <p class="dates">Jan 2026 — Present</p>
+          <p class="company">Controlla</p>
+          <p class="loc">Portland, OR · Remote</p>
+        </div>
+        <div class="xp-body">
+          <h3>Machine Learning Engineer — Music</h3>
+          <ul>
+            <li>Shipped <strong>Lyric Swap</strong> — a novel method to rewrite song lyrics while preserving the original melody, timing, and vocals.</li>
+            <li>Shipped <strong>Choir Studio</strong> — an AI harmony generation system.</li>
+            <li>Build and deploy end-to-end ML pipelines for audio analytics and AI voice cloning — from data curation through low-latency inference.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal">
+        <div class="xp-meta">
+          <p class="dates">2015 — Present</p>
+          <p class="company">Sonic Pro Studios</p>
+          <p class="loc">Portland, OR · Remote</p>
+        </div>
+        <div class="xp-body">
+          <h3>Founder &amp; AI Technologist</h3>
+          <ul>
+            <li>Founded a creative-technical laboratory at the intersection of music production and AI — prototyping generative music models and CNN-based audio classification tools for real creative workflows.</li>
+            <li>Scaled to hundreds of high-profile international audio productions — home to <strong>50+ international cinema film projects</strong> — with 50% revenue growth in year one.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp-item reveal">
+        <div class="xp-meta">
+          <p class="dates">2010 — 2015</p>
+          <p class="company">Intel Corporation</p>
+          <p class="loc">Hillsboro, OR</p>
+        </div>
+        <div class="xp-body">
+          <h3>Process Development Engineer · Data Science &amp; Yield Analytics</h3>
+          <ul>
+            <li>Improved wafer yields by up to <strong>30%</strong> on 14nm/10nm nodes by modeling defect patterns with advanced statistics.</li>
+            <li>Designed and executed <strong>100+ Designs of Experiments</strong> with multivariate regression, reducing defect density by up to 10×.</li>
+            <li>Qualified new materials and process changes with hypothesis testing and statistical inference, shortening development timelines by 15%.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -518,9 +685,34 @@
 <section id="projects" class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">02 — Projects</p>
+      <p class="eyebrow">03 — Projects</p>
       <h2>Selected work</h2>
     </div>
+
+    <div class="featured-grid">
+      <div class="feature-card reveal">
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/oeTq219RV24" title="Lyric Swap demo video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="body">
+          <div class="project-tags"><span>Shipped at Controlla</span><span>Generative Audio</span></div>
+          <h3>Lyric Swap</h3>
+          <p>A novel method to rewrite a song's lyrics while preserving the original melody, timing, and vocals.</p>
+        </div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="video">
+          <iframe src="https://www.youtube-nocookie.com/embed/ULUCrb5VFL4" title="Choir Studio demo video" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="body">
+          <div class="project-tags"><span>Shipped at Controlla</span><span>AI Harmony</span></div>
+          <h3>Choir Studio</h3>
+          <p>An AI harmony generation system — turn a single vocal into a full, arranged choir.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="sub-label reveal">Earlier &amp; independent projects</p>
     <div class="project-grid">
 
       <a class="project-card reveal" href="https://github.com/balubm/CNN-Powered-Detector-Spotting-Suno-AI-Music-vs.-Human-Tracks" target="_blank" rel="noopener">
@@ -586,47 +778,51 @@
 <section id="skills" class="section">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">03 — Skills</p>
+      <p class="eyebrow">04 — Skills</p>
       <h2>Toolbox</h2>
     </div>
     <div class="skills-grid">
 
       <div class="skill-group reveal">
         <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Programming &amp; Tools
-        </h3>
-        <div class="chips">
-          <span>Python</span><span>SQL</span><span>NumPy</span><span>Pandas</span>
-          <span>Matplotlib</span><span>Seaborn</span><span>Scikit-learn</span>
-          <span>PyTorch</span><span>TensorFlow</span><span>Librosa</span>
-        </div>
-      </div>
-
-      <div class="skill-group reveal">
-        <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg>
-          Data Science &amp; ML
+          Machine Learning &amp; Audio AI
         </h3>
         <div class="chips">
-          <span>Supervised &amp; Unsupervised Learning</span><span>Neural Networks</span>
-          <span>CNN</span><span>RNN</span><span>XGBoost</span><span>Classification</span>
-          <span>Regression</span><span>Feature Engineering</span><span>Model Evaluation</span>
-          <span>Statistical Analysis</span><span>LLMs</span><span>Generative AI</span>
+          <span>PyTorch</span><span>Voice Conversion (SVC)</span>
+          <span>Singing Voice Synthesis</span><span>Stem Separation</span>
+          <span>ASR &amp; Forced Alignment</span><span>CNNs &amp; U-Nets</span>
+          <span>GANs &amp; Neural Vocoders</span><span>Diffusion Models</span>
+          <span>LoRA Fine-tuning</span><span>Contrastive Learning (CLAP)</span>
+          <span>LLM Integration</span><span>Model Evaluation</span>
         </div>
       </div>
 
       <div class="skill-group reveal">
         <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          Applied Skills
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 8v8"/><path d="M10 4v16"/><path d="M14 7v10"/><path d="M18 10v4"/><path d="M22 12h-2"/></svg>
+          Audio DSP &amp; Analysis
         </h3>
         <div class="chips">
-          <span>Cross-functional Teamwork</span>
-          <span>Research-to-Production Integration</span>
-          <span>Experiment Design</span>
-          <span>Data-Driven Decision Making</span>
-          <span>Communicating Technical Insights</span>
+          <span>Librosa</span><span>Pitch Tracking (F0 / pYIN)</span>
+          <span>STFT &amp; Spectrograms</span><span>Dereverberation &amp; Denoising</span>
+          <span>Loudness &amp; Mix Mastering</span><span>Key &amp; Tempo Detection</span>
+          <span>Formant Processing</span><span>Perceptual Quality Metrics</span>
+          <span>MIDI</span><span>Music Theory</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
+          Production &amp; Experimentation
+        </h3>
+        <div class="chips">
+          <span>Python</span><span>FastAPI</span><span>Serverless GPU (Modal)</span>
+          <span>Google Cloud</span><span>Celery &amp; Redis</span><span>PostgreSQL</span>
+          <span>SQL</span><span>Low-latency Inference</span>
+          <span>On-device ML (C++ / JUCE, iOS)</span><span>A/B Testing (PostHog)</span>
+          <span>Experiment Design (DoE)</span><span>NumPy · Pandas · Matplotlib</span>
         </div>
       </div>
 
@@ -638,7 +834,7 @@
 <section id="contact" class="section contact">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow">04 — Contact</p>
+      <p class="eyebrow">05 — Contact</p>
       <h2>Let's talk</h2>
     </div>
     <p class="blurb reveal">
