@@ -3,416 +3,728 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Section</title>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Balamurali Balu — Machine Learning &amp; Audio AI</title>
+<meta name="description" content="Balamurali Balu — applied machine learning engineer working on generative audio, audio classifiers, and production ML systems. Previously Intel. PhD, Georgia Tech.">
+<meta property="og:title" content="Balamurali Balu — Machine Learning &amp; Audio AI">
+<meta property="og:description" content="Applied ML engineer working on generative audio, audio classifiers, and production ML systems.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/about/1.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230C0E12'/%3E%3Cg stroke='%23E9B45C' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='M8 13v6'/%3E%3Cpath d='M13 9v14'/%3E%3Cpath d='M18 12v8'/%3E%3Cpath d='M23 15v2'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
-  .about-section {
+  /* ============ Design tokens ============ */
+  :root {
+    --bg: #0C0E12;
+    --bg-raised: #12151B;
+    --bg-card: #141821;
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.14);
+    --text: #EAECEF;
+    --text-dim: #A3AAB5;
+    --text-faint: #6E7681;
+    --accent: #E9B45C;
+    --accent-soft: rgba(233, 180, 92, 0.12);
+    --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+    --radius: 16px;
+    --container: 1080px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: #14171C; }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { scroll-margin-top: 96px; }
+
+  /* ============ Nav ============ */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(12, 14, 18, 0.78);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-brand {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-brand .dot { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    list-style: none;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a {
+    display: block;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(255, 255, 255, 0.05); }
+  .nav-links a.active { color: var(--accent); background: var(--accent-soft); }
+
+  /* ============ Hero ============ */
+  .hero {
+    padding: 172px 0 104px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* soft ambient glow behind the hero */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -240px; right: -160px;
+    width: 720px; height: 720px;
+    background: radial-gradient(circle, rgba(233, 180, 92, 0.09) 0%, transparent 62%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 64px;
+    align-items: center;
+  }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 54px);
+    font-weight: 700;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero .lede {
+    font-size: 17.5px;
+    color: var(--text-dim);
+    max-width: 54ch;
+    margin-bottom: 36px;
+  }
+  .hero .lede strong { color: var(--text); font-weight: 600; }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 24px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 999px;
+    transition: transform 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--accent); color: #16130B; }
+  .btn-primary:hover { background: #F0C176; }
+  .btn-ghost {
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+    background: transparent;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn svg { width: 17px; height: 17px; flex: none; }
+
+  .hero-portrait { position: relative; justify-self: end; width: min(100%, 380px); }
+  .hero-portrait .frame {
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+    aspect-ratio: 4 / 5;
+  }
+  .hero-portrait img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 65% 20%;
+  }
+  /* corner accent behind the portrait */
+  .hero-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+    border: 1px solid rgba(233, 180, 92, 0.35);
+    border-radius: 24px;
+    z-index: -1;
+  }
+
+  /* ============ Sections ============ */
+  .section { padding: 96px 0; border-top: 1px solid var(--line); }
+  .section-head { margin-bottom: 52px; }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.6vw, 38px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  /* ============ About ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 56px;
+  }
+  .about-grid p { color: var(--text-dim); font-size: 16.5px; }
+  .about-grid p strong { color: var(--text); font-weight: 600; }
+
+  /* ============ Projects ============ */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233, 180, 92, 0.45);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+  }
+  .project-card .thumb {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .project-card .thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+  }
+  .project-card:hover .thumb img { transform: scale(1.045); }
+  .project-card .body {
+    padding: 22px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .project-tags span {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .project-card h3 {
+    font-family: var(--font-display);
+    font-size: 18.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+  }
+  .project-card .cta {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-dim);
+    transition: color 0.15s;
+  }
+  .project-card:hover .cta { color: var(--accent); }
+  .project-card .cta svg { width: 15px; height: 15px; transition: transform 0.15s; }
+  .project-card:hover .cta svg { transform: translateX(3px); }
+
+  /* ============ Skills ============ */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+  .skill-group {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 26px;
+  }
+  .skill-group h3 {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .skill-group h3 svg { width: 19px; height: 19px; color: var(--accent); flex: none; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chips span {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-dim);
+    border: 1px solid var(--line-strong);
+    padding: 5px 12px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  /* ============ Education ============ */
+  .edu-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 30px 32px;
+  }
+  .edu-card .badge {
+    flex: none;
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    background: var(--accent-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .edu-card .badge svg { width: 26px; height: 26px; color: var(--accent); }
+  .edu-card h3 {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .edu-card p { color: var(--text-dim); font-size: 15px; }
+
+  /* ============ Contact ============ */
+  .contact { text-align: center; }
+  .contact .section-head { margin-bottom: 20px; }
+  .contact .blurb {
+    color: var(--text-dim);
+    max-width: 46ch;
+    margin: 0 auto 40px;
+    font-size: 16.5px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 44px;
+  }
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 20px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .social-link:hover { color: var(--accent); border-color: var(--accent); }
+  .social-link svg { width: 17px; height: 17px; flex: none; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 30px 0;
     text-align: center;
-    padding: 50px 0;
-  }
-  .about-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-  }
-  .about-section img {
-    width: 150px; /* Adjust the size as needed */
-    height: 200px;
-    border-radius: 50%; /* Makes the image round */
-    margin-bottom: 20px;
-  }
-  .about-section p {
-    color: #333;
+    color: var(--text-faint);
+    font-size: 13.5px;
   }
 
-  /* Additional CSS for Projects Section */
-.projects-section h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
-.card {
-  box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Adds a subtle shadow around the card */
-}
-.card-img-top {
-  max-height: 180px; /* Adjust this value to fit the image properly in the card */
-  object-fit: cover; /* This makes sure the image covers the area properly */
-}
-.card-body {
-  padding: 15px;
-}
-.card-title {
-  font-size: 1.25rem;
-}
-.card-text {
-  margin-bottom: 15px;
-}
-
-/* Additional CSS for Skills Section */
-.skills-section h2 {
-  margin-bottom: 40px;
-  font-size: 2.5rem;
-}
-.skills-section .card {
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.skills-section .card-img-top {
-  padding: 20px; /* Add padding around your images if needed */
-  background-color: #f8f9fa; /* Adjust the background color if your images have transparent areas#f8f9fa */
-  height: 180px; /* Fixed height for consistency */
-  object-fit: contain; /* This will make sure the image is scaled properly within the container */
-}
-.skills-section .card-body {
-  padding: 15px;
-}
-.skills-section .card-title {
-  font-size: 1.25rem;
-  margin-bottom: 15px;
-}
-.skills-section .btn-outline-primary {
-  color: #007bff;
-  border-color: #007bff;
-}
-.skills-section .btn-outline-primary:hover {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-/* Additional CSS for Contact Section */
-.contact-section {
-  padding: 50px 0;
-}
-.contact-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-}
-.contact-section p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-.social-icon {
-  width: 50px; /* Size of your icons */
-  margin-bottom: 10px;
-}
-/* Hover effect for icons */
-.social-icon:hover {
-  opacity: 0.7;
-}
-/* Style for links in the Contact section */
-.contact-section a {
-  color: #fff;
-  text-decoration: none; /* Removes underline from links */
-  display: inline-block; /* Allows for margin on the bottom */
-  margin-bottom: 10px;
-}
-.contact-section a:hover {
-  color: #ddd; /* Color when hovering over the link */
-}
-
-/* CSS for Sticky Navbar */
-.navbar {
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Adds a shadow for depth */
-}
-
-/* Ensure padding is added to body to avoid content being hidden behind the navbar */
-body { 
-  padding-top: 56px; /* Adjust this value based on the height of your navbar */
-}
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Style for navigation bar links */
-.navbar-nav .nav-link {
-  color: white;
-}
-
-.navbar-nav .nav-link:hover {
-  color: #f8f9fa; /* Slightly lighter white when hovering over links */
-}
-
-/* Media query for responsive navbar collapsing */
-@media (max-width: 992px) {
-  .navbar-collapse {
-    background-color: #343a40; /* Same as navbar color for seamless look */
+  /* ============ Reveal animation ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
-}
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
 
-
+  /* ============ Responsive ============ */
+  @media (max-width: 900px) {
+    .hero { padding: 140px 0 72px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-portrait { justify-self: start; width: min(100%, 320px); }
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+    .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .section { padding: 72px 0; }
+  }
+  @media (max-width: 560px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .nav-inner { height: 58px; }
+    .nav-brand { font-size: 15.5px; }
+    .nav-links a { padding: 7px 10px; font-size: 13px; }
+    .edu-card { flex-direction: column; align-items: flex-start; }
+  }
 </style>
-
 </head>
 <body>
-  <!-- Home Section at the very top -->
-  <section id="home" class="py-5 text-center">
- 
 
-
-  <section id="about" class="about-section">
-    <div class="container">
-      <h2>About</h2>
-      <img src="images/about/1.jpg" alt="About Me">
-      <p>
-        I am an applied data scientist and machine learning practitioner with a background spanning deep learning,
-        statistical modeling, and real-world AI systems. I previously worked at Intel, where I applied data science
-        and Design of Experiments to optimize semiconductor manufacturing, improve yield, and automate large-scale
-        analysis pipelines. My work focused on turning complex data into practical, measurable outcomes in
-        high-stakes production environments.
-      </p>
-      <p>
-        Since then, I have founded and led Sonic Pro Studios, where I combine machine learning with creative
-        technology. My recent work includes building generative audio models, CNN-based audio classifiers, and
-        ML-driven workflow optimizations used in production settings. I enjoy bridging research and execution—
-        taking ideas from experimentation to deployment—and I am particularly interested in applied AI,
-        generative models, and systems that operate reliably at scale.
-      </p>
-    </div>
-  </section>
-  <!-- ...rest of your sections (projects, skills, etc.) -->
-
-
-<!-- Projects Section -->
-<section id="projects" class="projects-section bg-light">
-  <div class="container">
-    <h2 class="text-center">Projects</h2>
-
-    <div class="row justify-content-center">
-
-      <!-- Project 1 -->
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card h-100">
-          <img src="images/projects/1.jpg" class="card-img-top" alt="Project 1">
-          <div class="card-body d-flex flex-column">
-           
-            <p class="card-text">
-              CNN-Powered Detector: Spotting Suno AI Music vs. Human Tracks
-            </p>
-            <a href="https://github.com/balubm/CNN-Powered-Detector-Spotting-Suno-AI-Music-vs.-Human-Tracks"
-               class="btn btn-primary mt-auto"
-               target="_blank">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card h-100">
-          <img src="images/projects/2.jpg" class="card-img-top" alt="Project 2">
-          <div class="card-body d-flex flex-column">
-        
-            <p class="card-text">
-              MeloLab: An AI Tool to Generate Unlimited Melodies in Any Scale or Mode 
-            </p>
-            <a href="https://github.com/balubm/MeloLab-An-AI-Tool-to-Generate-Unlimited-Melodies-in-Any-Scale-or-Mode"
-               class="btn btn-primary mt-auto"
-               target="_blank">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card h-100">
-          <img src="images/projects/3.jpg" class="card-img-top" alt="Project 3">
-          <div class="card-body d-flex flex-column">
-           
-            <p class="card-text">
-              Contrastive Language–Audio Pretraining (CLAP) for Semantic Origin Detection
-            </p>
-            <a href="https://github.com/balubm/Contrastive-Language-Audio-Pretraining-CLAP-for-Semantic-Origin-Detection"
-               class="btn btn-primary mt-auto"
-               target="_blank">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card h-100">
-          <img src="images/projects/4.jpg" class="card-img-top" alt="Project 4">
-          <div class="card-body d-flex flex-column">
-
-            <p class="card-text">
-              Raag Bihag composition by RNN-LSTM
-            </p>
-            <a href="https://github.com/balubm/Raag-Bihag-composition-by-RNN-LSTM"
-               class="btn btn-primary mt-auto"
-               target="_blank">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="col-md-4 col-sm-6 mb-4">
-        <div class="card h-100">
-          <img src="images/projects/5.jpg" class="card-img-top" alt="Project 5">
-          <div class="card-body d-flex flex-column">
-        
-            <p class="card-text">
-              Recognizing Musical Instruments with Deep Learning
-            </p>
-            <a href="https://github.com/balubm/Music-Instrument-Classification_CNN"
-               class="btn btn-primary mt-auto"
-               target="_blank">
-              View on GitHub
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section>
-
-
-
-</section>
-
-
- <!-- Skills Section -->
-<section id="skills" class="skills-section bg-light">
-  <div class="container">
-    <h2 class="text-center">Skills</h2>
-    <div class="row justify-content-center mt-4">
-
-      <!-- Programming & Tools -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Programming & Tools</h5>
-            <p class="card-text">
-              Python, SQL, NumPy, Pandas, Matplotlib, Seaborn, Scikit-learn, PyTorch, TensorFlow, Librosa
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Data Science & ML -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Data Science & ML</h5>
-            <p class="card-text">
-              Supervised & Unsupervised Learning, Neural Networks, CNN, RNN, XGBoost, Classification, Regression, Feature Engineering, Model Evaluation, Statistical Analysis, LLM, Generative AI
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Applied Skills -->
-      <div class="col-md-4 mb-4">
-        <div class="card h-100 text-center">
-          <div class="card-body">
-            <h5 class="card-title">Applied Skills</h5>
-            <p class="card-text">
-              Cross-functional Teamwork, Research-to-Production Integration, Experiment Design & Data-Driven Decision Making, Communication of Technical Insights to Non-Technical Stakeholders
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- Education Section -->
-<section id="education" class="education-section bg-white py-5">
-  <div class="container text-center">
-    <h2 class="mb-4">Education</h2>
-    <p class="mb-0">🎓 Ph.D., Chemical Engineering – Georgia Institute of Technology, Atlanta GA</p>
-  </div>
-</section>
-
-
-
-
- 
-
-<!-- Contact Me Section -->
-<section id="contact" class="contact-section text-center text-white bg-dark py-5">
-  <div class="container">
-    <h2 class="mb-4">Contact Me</h2>
-
-    <!-- Contact Info -->
-    <div class="row justify-content-center mb-4">
-      <div class="col-md-4 mb-3">
-        <p class="mb-0"><i class="fas fa-envelope"></i> <a href="mailto:balubm@gmail.com" class="text-white">balubm@gmail.com</a></p>
-      </div>
-      <div class="col-md-4 mb-3">
-        <p class="mb-0"><i class="fas fa-phone"></i> <a href="tel:+15035473733" class="text-white">503-547-3733</a></p>
-      </div>
-    </div>
-
-    <!-- Social Links -->
-    <div class="row justify-content-center">
-      <div class="col-4 col-md-2 mb-3">
-        <a href="https://www.linkedin.com/in/balamurali-balu-b5a0a6357/" target="_blank" class="d-block text-white">
-          <img src="icons/linkedin.png" alt="LinkedIn" class="social-icon mb-2">
-          LinkedIn
-        </a>
-      </div>
-      <div class="col-4 col-md-2 mb-3">
-        <a href="https://github.com/balubm" target="_blank" class="d-block text-white">
-          <img src="icons/github.png" alt="GitHub" class="social-icon mb-2">
-          GitHub
-        </a>
-      </div>
-      <div class="col-4 col-md-2 mb-3">
-        <a href="https://medium.com/@balubm_57188" target="_blank" class="d-block text-white">
-          <img src="icons/medium.png" alt="Medium" class="social-icon mb-2">
-          Medium
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Sticky Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#home">Balamurali Balu</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#home">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#projects">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
-        </li>
-      </ul>
-    </div>
+<!-- ============ Navigation ============ -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">Balamurali Balu<span class="dot">.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </div>
 </nav>
 
+<!-- ============ Hero ============ -->
+<header class="hero" id="top">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Applied Machine Learning · Audio &amp; Generative AI</p>
+      <h1>Building ML systems<br>for <span class="accent">sound</span>.</h1>
+      <p class="lede">
+        I'm an applied machine learning engineer working at the intersection of
+        <strong>deep learning and audio</strong> — generative music models, audio
+        classifiers, and ML pipelines that hold up in production. Previously, I used
+        data science to optimize semiconductor manufacturing at <strong>Intel</strong>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="mailto:balubm@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          Get in touch
+        </a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/balamurali-balu-b5a0a6357/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="frame">
+        <img src="images/about/1.jpg" alt="Portrait of Balamurali Balu" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</header>
 
-<!-- Bootstrap JS and dependencies (jQuery and Popper) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.9.5/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- ============ About ============ -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">01 — About</p>
+      <h2>From semiconductor fabs to sound studios</h2>
+    </div>
+    <div class="about-grid">
+      <p class="reveal">
+        I am an applied data scientist and machine learning practitioner with a background
+        spanning <strong>deep learning, statistical modeling, and real-world AI systems</strong>.
+        I previously worked at Intel, where I applied data science and Design of Experiments
+        to optimize semiconductor manufacturing, improve yield, and automate large-scale
+        analysis pipelines — turning complex data into practical, measurable outcomes in
+        high-stakes production environments.
+      </p>
+      <p class="reveal">
+        Since then, I founded and led <strong>Sonic Pro Studios</strong>, where I combine
+        machine learning with creative technology: generative audio models, CNN-based audio
+        classifiers, and ML-driven workflow optimizations used in production settings. I enjoy
+        bridging research and execution — taking ideas from experimentation to deployment —
+        with a particular focus on applied AI, generative models, and systems that operate
+        reliably at scale.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Projects ============ -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">02 — Projects</p>
+      <h2>Selected work</h2>
+    </div>
+    <div class="project-grid">
+
+      <a class="project-card reveal" href="https://github.com/balubm/CNN-Powered-Detector-Spotting-Suno-AI-Music-vs.-Human-Tracks" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/projects/1.jpg" alt="AI vs human music detector" loading="lazy"></div>
+        <div class="body">
+          <div class="project-tags"><span>CNN</span><span>Audio Classification</span></div>
+          <h3>Spotting Suno AI Music vs. Human Tracks</h3>
+          <span class="cta">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/balubm/MeloLab-An-AI-Tool-to-Generate-Unlimited-Melodies-in-Any-Scale-or-Mode" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/projects/2.jpg" alt="MeloLab melody generator" loading="lazy"></div>
+        <div class="body">
+          <div class="project-tags"><span>Generative AI</span><span>Music Theory</span></div>
+          <h3>MeloLab — Unlimited Melodies in Any Scale or Mode</h3>
+          <span class="cta">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/balubm/Contrastive-Language-Audio-Pretraining-CLAP-for-Semantic-Origin-Detection" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/projects/3.jpg" alt="CLAP semantic origin detection" loading="lazy"></div>
+        <div class="body">
+          <div class="project-tags"><span>Contrastive Learning</span><span>Audio-Language</span></div>
+          <h3>CLAP for Semantic Origin Detection</h3>
+          <span class="cta">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/balubm/Raag-Bihag-composition-by-RNN-LSTM" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/projects/4.jpg" alt="Raag Bihag RNN-LSTM composition" loading="lazy"></div>
+        <div class="body">
+          <div class="project-tags"><span>RNN-LSTM</span><span>Music Generation</span></div>
+          <h3>Raag Bihag Composition with RNN-LSTM</h3>
+          <span class="cta">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://github.com/balubm/Music-Instrument-Classification_CNN" target="_blank" rel="noopener">
+        <div class="thumb"><img src="images/projects/5.jpg" alt="Musical instrument recognition" loading="lazy"></div>
+        <div class="body">
+          <div class="project-tags"><span>CNN</span><span>Classification</span></div>
+          <h3>Recognizing Musical Instruments with Deep Learning</h3>
+          <span class="cta">View on GitHub
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ Skills ============ -->
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">03 — Skills</p>
+      <h2>Toolbox</h2>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Programming &amp; Tools
+        </h3>
+        <div class="chips">
+          <span>Python</span><span>SQL</span><span>NumPy</span><span>Pandas</span>
+          <span>Matplotlib</span><span>Seaborn</span><span>Scikit-learn</span>
+          <span>PyTorch</span><span>TensorFlow</span><span>Librosa</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 1 7 7c0 2.4-1.2 4.5-3 5.7V17a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-2.3C6.2 13.5 5 11.4 5 9a7 7 0 0 1 7-7z"/><path d="M9 21h6"/></svg>
+          Data Science &amp; ML
+        </h3>
+        <div class="chips">
+          <span>Supervised &amp; Unsupervised Learning</span><span>Neural Networks</span>
+          <span>CNN</span><span>RNN</span><span>XGBoost</span><span>Classification</span>
+          <span>Regression</span><span>Feature Engineering</span><span>Model Evaluation</span>
+          <span>Statistical Analysis</span><span>LLMs</span><span>Generative AI</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Applied Skills
+        </h3>
+        <div class="chips">
+          <span>Cross-functional Teamwork</span>
+          <span>Research-to-Production Integration</span>
+          <span>Experiment Design</span>
+          <span>Data-Driven Decision Making</span>
+          <span>Communicating Technical Insights</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ Education ============ -->
+<section id="education" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">04 — Education</p>
+      <h2>Education</h2>
+    </div>
+    <div class="edu-card reveal">
+      <div class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg>
+      </div>
+      <div>
+        <h3>Ph.D., Chemical Engineering</h3>
+        <p>Georgia Institute of Technology — Atlanta, GA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Contact ============ -->
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">05 — Contact</p>
+      <h2>Let's talk</h2>
+    </div>
+    <p class="blurb reveal">
+      Open to conversations about applied ML, audio AI, and interesting problems
+      at the research-to-production boundary.
+    </p>
+    <div class="contact-row reveal">
+      <a class="btn btn-primary" href="mailto:balubm@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        balubm@gmail.com
+      </a>
+      <a class="btn btn-ghost" href="tel:+15035473733">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        503-547-3733
+      </a>
+    </div>
+    <div class="social-row reveal">
+      <a class="social-link" href="https://www.linkedin.com/in/balamurali-balu-b5a0a6357/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        LinkedIn
+      </a>
+      <a class="social-link" href="https://github.com/balubm" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.91c.58.1.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.75 2.7 1.25 3.36.95.1-.74.4-1.25.72-1.53-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.08 0 4.41-2.68 5.38-5.24 5.66.41.35.77 1.05.77 2.12v3.14c0 .3.2.66.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a class="social-link" href="https://medium.com/@balubm_57188" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 0 1-6.77 6.82A6.8 6.8 0 0 1 0 12a6.8 6.8 0 0 1 6.77-6.82A6.8 6.8 0 0 1 13.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg>
+        Medium
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year">2026</span> Balamurali Balu · Built with care</p>
+  </div>
+</footer>
+
+<script>
+  // Current year in the footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll-reveal: fade sections in as they enter the viewport
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Highlight the nav link for the section currently in view
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = [...navLinks].map((a) => document.querySelector(a.hash));
+  const navIo = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        navLinks.forEach((a) => a.classList.toggle('active', a.hash === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach((s) => s && navIo.observe(s));
+</script>
+
 </body>
 </html>
