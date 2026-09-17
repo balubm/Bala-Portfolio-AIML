@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12151B"/><stop offset="1" stop-color="#0C0E12"/>
+    </linearGradient>
+    <clipPath id="clip"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g clip-path="url(#clip)">
+<rect x="150" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="262" y1="633" x2="297" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="297" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="409" y1="633" x2="444" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="444" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="556" y1="633" x2="591" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="591" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="703" y1="633" x2="738" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="738" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="850" y1="633" x2="885" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="885" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="997" y1="633" x2="1032" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="1032" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="1144" y1="633" x2="1179" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="1179" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<line x1="1291" y1="633" x2="1326" y2="633" stroke="#232834" stroke-width="2"/>
+<rect x="1326" y="590" width="112" height="86" rx="10" fill="none" stroke="#232834" stroke-width="2"/>
+<polyline points="175,470 247,428 319,386 391,407 463,365 535,323 607,344 679,281 751,239 823,281 895,323 967,365 1039,386 1111,428 1183,470 1255,428 1327,365 1399,323" fill="none" stroke="#E9B45C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="175" cy="470" r="7" fill="#E9B45C"/>
+<circle cx="391" cy="407" r="7" fill="#E9B45C"/>
+<circle cx="607" cy="344" r="7" fill="#E9B45C"/>
+<circle cx="823" cy="281" r="7" fill="#E9B45C"/>
+<circle cx="1039" cy="386" r="7" fill="#E9B45C"/>
+<circle cx="1255" cy="428" r="7" fill="#E9B45C"/>
+  </g>
+  <rect x="0.5" y="0.5" width="1599" height="999" fill="none" stroke="#232834" stroke-width="1"/>
+  <rect x="96" y="150" width="54" height="3" fill="#E9B45C"/>
+  <rect x="96" y="850" width="1408" height="1" fill="#232834"/>
+  <text x="96" y="120" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="30" letter-spacing="3.5"
+        fill="#E9B45C">RNN-LSTM / MUSIC GENERATION</text>
+  <text x="96" y="912" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="30" fill="#A3AAB5">Indian classical corpus  ·  accuracy 0.9608</text>
+</svg>

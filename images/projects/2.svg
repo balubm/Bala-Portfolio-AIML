@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12151B"/><stop offset="1" stop-color="#0C0E12"/>
+    </linearGradient>
+    <clipPath id="clip"><rect width="1600" height="1000"/></clipPath>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <g clip-path="url(#clip)">
+<line x1="150" y1="330" x2="1450" y2="330" stroke="#232834" stroke-width="2"/>
+<ellipse cx="190" cy="300" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="206" y1="300" x2="206" y2="248" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="393" cy="388" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="409" y1="388" x2="409" y2="336" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="597" cy="388" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="613" y1="388" x2="613" y2="336" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="800" cy="300" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="816" y1="300" x2="816" y2="248" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="1003" cy="330" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="1019" y1="330" x2="1019" y2="278" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="1207" cy="388" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="1223" y1="388" x2="1223" y2="336" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<ellipse cx="1410" cy="360" rx="17" ry="12" fill="#6E7681" opacity="0.55"/>
+<line x1="1426" y1="360" x2="1426" y2="308" stroke="#6E7681" stroke-width="3" opacity="0.55"/>
+<line x1="150" y1="560" x2="1450" y2="560" stroke="#232834" stroke-width="2"/>
+<ellipse cx="190" cy="590" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="206" y1="590" x2="206" y2="538" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="277" cy="618" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="293" y1="618" x2="293" y2="566" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="364" cy="560" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="380" y1="560" x2="380" y2="508" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="451" cy="560" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="467" y1="560" x2="467" y2="508" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="539" cy="530" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="555" y1="530" x2="555" y2="478" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="626" cy="530" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="642" y1="530" x2="642" y2="478" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="713" cy="502" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="729" y1="502" x2="729" y2="450" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="800" cy="560" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="816" y1="560" x2="816" y2="508" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="887" cy="618" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="903" y1="618" x2="903" y2="566" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="974" cy="590" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="990" y1="590" x2="990" y2="538" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="1061" cy="618" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="1077" y1="618" x2="1077" y2="566" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="1149" cy="502" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="1165" y1="502" x2="1165" y2="450" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="1236" cy="560" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="1252" y1="560" x2="1252" y2="508" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="1323" cy="618" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="1339" y1="618" x2="1339" y2="566" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<ellipse cx="1410" cy="618" rx="17" ry="12" fill="#E9B45C" opacity="0.95"/>
+<line x1="1426" y1="618" x2="1426" y2="566" stroke="#E9B45C" stroke-width="3" opacity="0.95"/>
+<path d="M 790 420 L 790 470 M 772 452 L 790 472 L 808 452" fill="none" stroke="#E9B45C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <rect x="0.5" y="0.5" width="1599" height="999" fill="none" stroke="#232834" stroke-width="1"/>
+  <rect x="96" y="150" width="54" height="3" fill="#E9B45C"/>
+  <rect x="96" y="850" width="1408" height="1" fill="#232834"/>
+  <text x="96" y="120" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="30" letter-spacing="3.5"
+        fill="#E9B45C">GENERATIVE / MUSIC THEORY</text>
+  <text x="96" y="912" font-family="'JetBrains Mono','SF Mono',Menlo,Consolas,monospace" font-size="30" fill="#A3AAB5">Markov transition matrices  ·  any scale or mode</text>
+</svg>
